@@ -1,0 +1,19 @@
+.sidebar {
+  width: 200px;
+  background-color: #256029;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  height: 100%;
+}
+
+.sidebar a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  background-color: #1b4d1b;
+  padding: 10px;
+  border-radius: 5px;
+  text-align: center;
+}
