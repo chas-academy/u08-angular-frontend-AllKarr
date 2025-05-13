@@ -1,0 +1,13 @@
+<header style="display: flex; justify-content: space-between; align-items: center; background-color: #336543; color: white; padding: 10px;">
+  <div id="header-left">
+    <a routerLink="/" style="text-decoration: none; color: #ffffff;">Finance Manager</a>
+    <span id="welcome-msg" style="margin-left: 10px;">{{ welcomeMessage }}</span>
+  </div>
+  <div>
+    <input type="text" [(ngModel)]="username" placeholder="Username" *ngIf="!isLoggedIn" />
+    <input type="password" [(ngModel)]="password" placeholder="Password" *ngIf="!isLoggedIn" />
+    <button (click)="login()" *ngIf="!isLoggedIn">Login</button>
+    <button routerLink="/register" *ngIf="!isLoggedIn">Register</button>
+    <button (click)="logout()" *ngIf="isLoggedIn">Logout</button>
+  </div>
+</header>
