@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
-import { TransactionsComponent } from './transactions.component';
+import { HttpClientTestingModule } from '@angular/common/http/testing'; // Add HttpClientTestingModule for HttpClient requests
+import { TransactionsComponent } from './transactions.component';  // Import the standalone component
 
 describe('TransactionsComponent', () => {
   let component: TransactionsComponent;
@@ -8,7 +8,7 @@ describe('TransactionsComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [TransactionsComponent]
+      imports: [TransactionsComponent, HttpClientTestingModule]  // Use imports for standalone components and add HttpClientTestingModule
     })
     .compileComponents();
 

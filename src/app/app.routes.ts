@@ -1,6 +1,6 @@
-// src/app/app.routes.ts
 import { Routes } from '@angular/router';
 import { AuthGuard } from './auth/auth.guard';
+import { AuthService } from './services/auth.service'; // Ensure AuthService is imported
 
 export const routes: Routes = [
   {
@@ -10,7 +10,7 @@ export const routes: Routes = [
   },
   {
     path: 'transactions',
-    canActivate: [AuthGuard], // Skyddad route
+    canActivate: [AuthGuard], // Protected route
     loadComponent: () =>
       import('./pages/transactions/transactions.component').then(
         (m) => m.TransactionsComponent
@@ -18,7 +18,7 @@ export const routes: Routes = [
   },
   {
     path: 'budgets',
-    canActivate: [AuthGuard], // Skyddad route
+    canActivate: [AuthGuard], // Protected route
     loadComponent: () =>
       import('./pages/budgets/budgets.component').then((m) => m.BudgetsComponent),
   },
@@ -26,10 +26,14 @@ export const routes: Routes = [
     path: 'login',
     loadComponent: () =>
       import('./auth/login/login.component').then((m) => m.LoginComponent),
+    canActivate: [AuthGuard], // Prevent authenticated users from accessing the login page
+    data: { redirectTo: '/transactions' }, // Redirect authenticated users to transactions page
   },
   {
     path: 'register',
     loadComponent: () =>
       import('./auth/register/register.component').then((m) => m.RegisterComponent),
+    canActivate: [AuthGuard], // Prevent authenticated users from accessing the register page
+    data: { redirectTo: '/transactions' }, // Redirect authenticated users to transactions page
   },
 ];

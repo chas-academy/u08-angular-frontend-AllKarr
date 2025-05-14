@@ -1,5 +1,4 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { BudgetsComponent } from './budgets.component';
 
 describe('BudgetsComponent', () => {
@@ -8,7 +7,7 @@ describe('BudgetsComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [BudgetsComponent]
+      declarations: [BudgetsComponent]  // Correctly using declarations instead of imports
     })
     .compileComponents();
 
