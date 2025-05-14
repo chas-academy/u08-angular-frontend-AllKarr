@@ -1,1 +1,25 @@
-<p>budgets works!</p>
+<section class="budget-section">
+  <div class="form-container">
+    <input [(ngModel)]="category" type="text" placeholder="Category" />
+    <input [(ngModel)]="limit" type="number" placeholder="Limit" />
+    <button (click)="addBudget()">Add New Budget</button>
+
+    <div class="filter-section">
+      <input [(ngModel)]="searchTerm" placeholder="Search category..." />
+    </div>
+  </div>
+
+  <div *ngIf="filterBudgets().length; else noBudgets">
+    <div *ngFor="let b of filterBudgets()" class="item">
+      <span>{{ b.category }} - {{ b.limit }} kr</span>
+      <div class="actions">
+        <button (click)="editBudget(b)">Edit</button>
+        <button (click)="deleteBudget(b._id)">Delete</button>
+      </div>
+    </div>
+  </div>
+
+  <ng-template #noBudgets>
+    <p>No budgets found.</p>
+  </ng-template>
+</section>

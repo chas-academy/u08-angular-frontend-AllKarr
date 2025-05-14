@@ -1,15 +1,31 @@
-// src/app/app.routes.ts
 import { Routes } from '@angular/router';
-import { HomeComponent } from './pages/home/home.component';
-import { TransactionsComponent } from './pages/transactions/transactions.component';
-import { BudgetsComponent } from './pages/budgets/budgets.component';
-import { LoginComponent } from './auth/login/login.component';
-import { RegisterComponent } from './auth/register/register.component';
 
 export const routes: Routes = [
-  { path: '', component: HomeComponent },
-  { path: 'transactions', component: TransactionsComponent },
-  { path: 'budgets', component: BudgetsComponent },
-  { path: 'login', component: LoginComponent },
-  { path: 'register', component: RegisterComponent },
+  {
+    path: '',
+    loadComponent: () =>
+      import('./pages/home/home.component').then((m) => m.HomeComponent),
+  },
+  {
+    path: 'transactions',
+    loadComponent: () =>
+      import('./pages/transactions/transactions.component').then(
+        (m) => m.TransactionsComponent
+      ),
+  },
+  {
+    path: 'budgets',
+    loadComponent: () =>
+      import('./pages/budgets/budgets.component').then((m) => m.BudgetsComponent),
+  },
+  {
+    path: 'login',
+    loadComponent: () =>
+      import('./auth/login/login.component').then((m) => m.LoginComponent),
+  },
+  {
+    path: 'register',
+    loadComponent: () =>
+      import('./auth/register/register.component').then((m) => m.RegisterComponent),
+  },
 ];
