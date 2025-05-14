@@ -1,19 +1,94 @@
+/* Header style */
+header {
+  position: fixed;
+  top: 5%;
+  left: 0;
+  width: 100%;
+  z-index: 1001; /* Ensure header stays above the sidebar */
+  background-color: #fff; /* Adjust as necessary */
+  padding: 10px;
+}
+
+/* Default sidebar style */
 .sidebar {
   width: 160px;
-  background-color: #21412b;
+  background-color: #21412b; /* Solid background by default */
   padding: 20px;
   display: flex;
   flex-direction: column;
+  position: fixed;
+  top: 60px; /* Adjust for header height */
+  left: 10;
+  height: calc(100% - 60px); /* Subtract header height */
+  transition: transform 0.3s ease, background-color 0.3s ease; /* Add transition for background */
+  z-index: 1000; /* Sidebar z-index */
 }
 
+/* Sidebar links styling */
 .sidebar a {
   color: white;
   text-decoration: none;
   margin-bottom: 10px;
   padding: 10px;
   border-radius: 5px;
+  display: block;
 }
 
 .sidebar a.active {
   background-color: #295233;
+}
+
+/* Hamburger menu for mobile view */
+.hamburger-menu {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 12%;
+  z-index: 1002; /* Ensure hamburger menu is above the sidebar and header */
+  cursor: pointer;
+}
+
+/* Hamburger icon (three lines) */
+.hamburger-menu div {
+  width: 30px;
+  height: 4px;
+  background-color: #703c12;
+  margin: 5px 0;
+  transition: all 0.3s ease;
+}
+
+/* For mobile view: hide sidebar and show hamburger menu */
+@media screen and (max-width: 768px) {
+  .sidebar {
+    transform: translateY(-100%); /* Initially hide the sidebar */
+    top: 60px; /* Sidebar will appear below the header */
+    background-color: transparent; /* Transparent when closed on mobile */
+  }
+
+  .sidebar.open {
+    transform: translateY(0); /* Slide sidebar in when open */
+    background-color: #21412b; /* Show solid background when open */
+  }
+
+  /* Show the hamburger menu on mobile screens */
+  .hamburger-menu {
+    display: block;
+  }
+
+  /* Change hamburger icon when sidebar is open */
+  .hamburger-menu.open div:nth-child(1) {
+    transform: rotate(45deg);
+    position: relative;
+    top: 9px;
+  }
+
+  .hamburger-menu.open div:nth-child(2) {
+    opacity: 0;
+  }
+
+  .hamburger-menu.open div:nth-child(3) {
+    transform: rotate(-45deg);
+    position: relative;
+    top: -9px;
+  }
 }

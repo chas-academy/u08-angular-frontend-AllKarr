@@ -1,3 +1,5 @@
+<!-- budgets.component.html -->
+
 <section class="budget-section">
   <div class="form-container">
     <input [(ngModel)]="category" type="text" placeholder="Category" />
@@ -9,12 +11,13 @@
     </div>
   </div>
 
-  <div *ngIf="filterBudgets().length; else noBudgets">
+  <!-- Wrap budgets in the display-box to style them -->
+  <div class="display-box">
     <div *ngFor="let b of filterBudgets()" class="item">
       <span>{{ b.category }} - {{ b.limit }} kr</span>
       <div class="actions">
-        <button (click)="editBudget(b)">Edit</button>
-        <button (click)="deleteBudget(b._id)">Delete</button>
+        <button (click)="editBudget(b)" class="edit">Edit</button>
+        <button (click)="deleteBudget(b._id)" class="delete">Delete</button>
       </div>
     </div>
   </div>

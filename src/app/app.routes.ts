@@ -1,4 +1,6 @@
+// src/app/app.routes.ts
 import { Routes } from '@angular/router';
+import { AuthGuard } from './auth/auth.guard';
 
 export const routes: Routes = [
   {
@@ -8,6 +10,7 @@ export const routes: Routes = [
   },
   {
     path: 'transactions',
+    canActivate: [AuthGuard], // Skyddad route
     loadComponent: () =>
       import('./pages/transactions/transactions.component').then(
         (m) => m.TransactionsComponent
@@ -15,6 +18,7 @@ export const routes: Routes = [
   },
   {
     path: 'budgets',
+    canActivate: [AuthGuard], // Skyddad route
     loadComponent: () =>
       import('./pages/budgets/budgets.component').then((m) => m.BudgetsComponent),
   },

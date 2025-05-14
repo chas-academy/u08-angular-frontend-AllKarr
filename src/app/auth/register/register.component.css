@@ -1,3 +1,32 @@
-form {
-  max-width: 300px;
+.register-page {
+  background-image: url('/src/assets/bgloop.gif');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  height: 100vh;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.register-box {
+  width: 700px;
+  height: 500px;
+  opacity: 95%;
+  background-color: #336543;
+  padding: 20px;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.register-box input {
+  background-color: #1d4620;
+  color: white;
+  padding: 10px;
+  margin: 10px 0;
+  width: 95%;
 }

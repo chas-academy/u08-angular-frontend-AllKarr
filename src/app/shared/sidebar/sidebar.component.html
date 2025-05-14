@@ -1,4 +1,12 @@
+<!-- Sidebar HTML structure -->
 <aside class="sidebar">
   <a routerLink="/transactions" routerLinkActive="active">Transactions</a>
   <a routerLink="/budgets" routerLinkActive="active">Budgets</a>
 </aside>
+
+<!-- Hamburger menu for mobile -->
+<div class="hamburger-menu" (click)="toggleSidebar()">
+  <div></div>
+  <div></div>
+  <div></div>
+</div>

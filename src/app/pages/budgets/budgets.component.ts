@@ -15,6 +15,7 @@ export class BudgetsComponent {
   limit: number | null = null;
   searchTerm = '';
   budgets: any[] = [];
+  loading = true;  // Lägg till en "loading"-variabel
 
   constructor(private budgetService: BudgetService) {
     this.fetchBudgets();
@@ -22,8 +23,14 @@ export class BudgetsComponent {
 
   fetchBudgets() {
     this.budgetService.getBudgets().subscribe({
-      next: (data) => this.budgets = data,
-      error: () => alert('Failed to load budgets')
+      next: (data) => {
+        this.budgets = data;
+        this.loading = false;  // Dölj loadern när datan är klar
+      },
+      error: () => {
+        alert('Failed to load budgets');
+        this.loading = false;
+      }
     });
   }
 

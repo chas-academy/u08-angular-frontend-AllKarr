@@ -1,13 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
+import { Router } from '@angular/router';
 
 const API_BASE = 'https://finance-api-1.onrender.com/api/v1';
 
 @Component({
   selector: 'app-navbar',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, RouterModule],
   templateUrl: './navbar.component.html',
 })
 export class NavbarComponent implements OnInit {
@@ -28,33 +30,36 @@ export class NavbarComponent implements OnInit {
     window.addEventListener('storage', this.syncAcrossTabs.bind(this));
   }
 
-  async login() {
-    if (!this.username || !this.password) {
-      alert('Please enter username and password.');
-      return;
-    }
+  constructor(private router: Router) {}
 
-    try {
-      const res = await fetch(`${API_BASE}/auth/login`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ username: this.username, password: this.password }),
-      });
-
-      const data = await res.json();
-      if (res.ok && data.apiKey) {
-        localStorage.setItem('apiKey', data.apiKey);
-        localStorage.setItem('username', this.username);
-        this.isLoggedIn = true;
-        this.welcomeMessage = `Welcome ${this.username}!`;
-        alert('Login successful!');
-      } else {
-        alert(data.message || 'Login failed.');
-      }
-    } catch {
-      alert('Login error.');
-    }
+async login() {
+  if (!this.username || !this.password) {
+    alert('Please enter username and password.');
+    return;
   }
+
+  try {
+    const res = await fetch(`${API_BASE}/auth/login`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ username: this.username, password: this.password }),
+    });
+
+    const data = await res.json();
+    if (res.ok && data.apiKey) {
+      localStorage.setItem('apiKey', data.apiKey);
+      localStorage.setItem('username', this.username);
+      this.isLoggedIn = true;
+      this.welcomeMessage = `Welcome ${this.username}!`;
+      alert('Login successful!');
+      this.router.navigate(['/transactions']); // 👈 Gå till transactions
+    } else {
+      alert(data.message || 'Login failed.');
+    }
+  } catch {
+    alert('Login error.');
+  }
+}
 
   logout() {
     localStorage.removeItem('apiKey');

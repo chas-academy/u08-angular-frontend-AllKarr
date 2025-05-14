@@ -1,14 +1,25 @@
-<h2>Register</h2>
-<form (ngSubmit)="register()">
-  <label>
-    Username:
-    <input type="text" [(ngModel)]="username" name="username" required>
-  </label>
-  <br>
-  <label>
-    Password:
-    <input type="password" [(ngModel)]="password" name="password" required>
-  </label>
-  <br>
-  <button type="submit">Register</button>
-</form>
+<div class="register-page">
+  <div class="register-box">
+    <h2>Register</h2>
+    <form (submit)="register(); $event.preventDefault();">
+      <label>
+        Username:
+        <input [(ngModel)]="username" name="username" required />
+      </label>
+      <br />
+      <label>
+        Email:
+        <input [(ngModel)]="email" type="email" name="email" required />
+      </label>
+      <br />
+      <label>
+        Password:
+        <input [(ngModel)]="password" type="password" name="password" required />
+      </label>
+      <br />
+      <button type="submit">Register</button>
+    </form>
+
+    <button (click)="router.navigate(['/'])">Back to Home</button>
+  </div>
+</div>
