@@ -1,0 +1,42 @@
+/* src/app/pages/transactions/transactions.component.css */
+
+.form-container input,
+.form-container select {
+  display: block;
+  background-color: #336543;
+  color: white;
+  margin: 10px 0;
+  padding: 10px;
+  border: none;
+  width: 99%;
+}
+
+.display-box {
+  background-color: #d9d9d9;
+  margin-top: 20px;
+  padding: 10px;
+}
+
+.display-box .item {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.display-box .item button {
+  margin-left: 10px;
+}
+
+button.edit {
+  background-color: #8d541c;
+  color: white;
+  border: none;
+  padding: 5px;
+}
+
+button.delete {
+  background-color: #791c1c;
+  color: white;
+  border: none;
+  padding: 5px;
+}

@@ -1,1 +1,27 @@
-<p>transactions works!</p>
+<section id="transactions-section">
+  <div class="form-container">
+    <input type="text" placeholder="Description" [(ngModel)]="description" />
+    <input type="number" placeholder="Amount" [(ngModel)]="amount" />
+    <input type="text" placeholder="Category" [(ngModel)]="category" />
+    <select [(ngModel)]="type">
+      <option value="expense">Expense</option>
+      <option value="income">Income</option>
+    </select>
+    <button (click)="addTransaction()">Add New Transaction</button>
+
+    <div class="filter-section">
+      <input placeholder="Search category..." [(ngModel)]="searchTerm" />
+    </div>
+  </div>
+
+  <div class="display-box">
+    <div *ngIf="filterTransactions().length === 0">No transactions found.</div>
+    <div *ngFor="let t of filterTransactions()" class="item">
+      <span>{{ t.description }} - {{ t.amount }}kr - {{ t.category }} ({{ t.type }})</span>
+      <div class="actions">
+        <button class="edit" (click)="editTransaction(t)">Edit</button>
+        <button class="delete" (click)="deleteTransaction(t._id)">Delete</button>
+      </div>
+    </div>
+  </div>
+</section>
