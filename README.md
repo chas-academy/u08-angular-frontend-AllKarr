@@ -1,59 +1,72 @@
-# U08AngularFrontendAllKarr
+# U08 Finance Frontend — Angular
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.11.
+This is the frontend for the U08 Finance Manager project built in **Angular**. It connects to a custom-built **Finance API** and supports full **CRUD operations** for transactions and budgets.
 
-## Development server
+## 🌐 Live Demo
 
-To start a local development server, run:
+👉 [Live Site](https://finance-manager-angular.netlify.app/)
 
-```bash
-ng serve
-```
+## 📦 Backend API
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+👉 [API GitHub Repo](https://github.com/AllKarr/Finance-API)
 
-## Code scaffolding
+This API handles:
+- Users (Register/Login)
+- Transactions (Create, Read, Update, Delete)
+- Budgets (Create, Read, Update, Delete)
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+## 🧰 Technologies Used
 
-```bash
-ng generate component component-name
-```
+- Angular (v17)
+- TypeScript
+- RxJS
+- HTML5/CSS3
+- Deployed via Netlify
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+## 📌 Features
 
-```bash
-ng generate --help
-```
+- Full **CRUD functionality**:
+  - Get all / Get one / Create / Update / Delete for Transactions and Budgets
+- API integration using Angular **services** and **HttpClient**
+- **Responsive layout** working on both desktop and mobile (iPhone 13 tested)
+- **Routing** between different pages (e.g., Transactions, Budgets)
+- **RxJS observables** for handling asynchronous API calls
+- Basic **form validation**
+- Minimalistic and clean **UX/UI design**
+- Fully **deployed and live**
 
-## Building
+## 🧪 Tests
 
-To build the project run:
+This app includes basic unit tests using Angular’s testing framework:
 
-```bash
-ng build
-```
+- At least **3 tests** implemented
+- Covers at least one Angular component
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+To run the tests:
 
 ```bash
 ng test
 ```
 
-## Running end-to-end tests
+## 📂 Installation
 
-For end-to-end (e2e) testing, run:
+To get started with the project locally:
+
+1. Clone the repository:
 
 ```bash
-ng e2e
+git clone https://github.com/chas-academy/u08-angular-frontend-AllKarr.git
+cd u08-angular-frontend-AllKarr
 ```
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+2. Install dependencies:
 
-## Additional Resources
+```bash
+npm install
+```
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+3. Run the development server:
+
+```bash
+ng serve
+```
