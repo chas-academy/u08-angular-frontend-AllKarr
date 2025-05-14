@@ -1,6 +1,5 @@
 import { Routes } from '@angular/router';
 import { AuthGuard } from './auth/auth.guard';
-import { AuthService } from './services/auth.service'; // Ensure AuthService is imported
 
 export const routes: Routes = [
   {
@@ -9,8 +8,13 @@ export const routes: Routes = [
       import('./pages/home/home.component').then((m) => m.HomeComponent),
   },
   {
+    path: 'home',
+    loadComponent: () =>
+      import('./pages/home/home.component').then((m) => m.HomeComponent),
+  },
+  {
     path: 'transactions',
-    canActivate: [AuthGuard], // Protected route
+    canActivate: [AuthGuard],
     loadComponent: () =>
       import('./pages/transactions/transactions.component').then(
         (m) => m.TransactionsComponent
@@ -18,22 +22,23 @@ export const routes: Routes = [
   },
   {
     path: 'budgets',
-    canActivate: [AuthGuard], // Protected route
+    canActivate: [AuthGuard],
     loadComponent: () =>
-      import('./pages/budgets/budgets.component').then((m) => m.BudgetsComponent),
+      import('./pages/budgets/budgets.component').then(
+        (m) => m.BudgetsComponent
+      ),
   },
   {
     path: 'login',
     loadComponent: () =>
       import('./auth/login/login.component').then((m) => m.LoginComponent),
-    canActivate: [AuthGuard], // Prevent authenticated users from accessing the login page
-    data: { redirectTo: '/transactions' }, // Redirect authenticated users to transactions page
+    // ❌ Remove canActivate from login
+    // data also removed to simplify route
   },
   {
     path: 'register',
     loadComponent: () =>
       import('./auth/register/register.component').then((m) => m.RegisterComponent),
-    canActivate: [AuthGuard], // Prevent authenticated users from accessing the register page
-    data: { redirectTo: '/transactions' }, // Redirect authenticated users to transactions page
+    // ❌ Remove canActivate from register
   },
 ];

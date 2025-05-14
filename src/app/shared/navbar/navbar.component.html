@@ -7,7 +7,12 @@
     <input type="text" [(ngModel)]="username" placeholder="Username" *ngIf="!isLoggedIn" />
     <input type="password" [(ngModel)]="password" placeholder="Password" *ngIf="!isLoggedIn" />
     <button (click)="login()" *ngIf="!isLoggedIn">Login</button>
-    <button routerLink="/register" *ngIf="!isLoggedIn">Register</button>
+    
+    <!-- ✅ Working Register button -->
+    <a routerLink="/register" *ngIf="!isLoggedIn">
+      <button>Register</button>
+    </a>
+
     <button (click)="logout()" *ngIf="isLoggedIn">Logout</button>
   </div>
 </header>

@@ -30,7 +30,7 @@ export class NavbarComponent implements OnInit {
     window.addEventListener('storage', this.syncAcrossTabs.bind(this));
   }
 
-  constructor(private router: Router) {}
+  constructor(public router: Router) {}
 
 async login() {
   if (!this.username || !this.password) {
