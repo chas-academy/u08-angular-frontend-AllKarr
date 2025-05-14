@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/u08-angular-frontend-all-karr",
+            "outputPath": "dist/u08-angular-frontend-all-karr/browser",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
